@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para una súper chica 💌</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #a3e4d7 !important;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .header-note {
+            position: absolute;
+            top: 25px;
+            font-size: 0.95rem;
+            color: #d81b60;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 22px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(216, 27, 96, 0.12);
+            z-index: 20;
+            text-align: center;
+        }
+
+        .scene-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 500px;
+            height: 460px;
+            perspective: 1500px;
+            margin-top: 15px;
+        }
+
+        /* Tulipanes laterales estilizados y naturales */
+        .tulip-side {
+            position: absolute;
+            width: 60px;
+            height: 200px;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .tulip-left {
+            left: 10px;
+            bottom: 40px;
+            transform-origin: bottom center;
+            animation: sway-left 4.2s ease-in-out infinite alternate;
+        }
+
+        .tulip-right {
+            right: 10px;
+            bottom: 40px;
+            transform-origin: bottom center;
+            animation: sway-right 4.8s ease-in-out infinite alternate;
+        }
+
+        @keyframes sway-left {
+            0% { transform: rotate(-6deg); }
+            100% { transform: rotate(6deg); }
+        }
+
+        @keyframes sway-right {
+            0% { transform: rotate(6deg); }
+            100% { transform: rotate(-6deg); }
+        }
+
+        .tulip-side .stem {
+            position: absolute;
+            bottom: 0;
+            left: 28px;
+            width: 4px;
+            height: 130px;
+            background: #27ae60;
+            border-radius: 2px;
+        }
+
+        .tulip-side .leaf-l {
+            position: absolute;
+            bottom: 35px;
+            left: 6px;
+            width: 24px;
+            height: 38px;
+            background: #2ecc71;
+            border-radius: 0 50% 50% 0;
+            transform: rotate(-35deg);
+            transform-origin: bottom right;
+        }
+
+        .tulip-side .leaf-r {
+            position: absolute;
+            bottom: 60px;
+            left: 30px;
+            width: 24px;
+            height: 38px;
+            background: #2ecc71;
+            border-radius: 50% 0 0 50%;
+            transform: rotate(35deg);
+            transform-origin: bottom left;
+        }
+
+        .tulip-side .bloom {
+            position: absolute;
+            top: 5px;
+            left: 12px;
+            width: 34px;
+            height: 44px;
+            background: #f1c40f;
+            border-radius: 50% 50% 45% 45%;
+            box-shadow: inset -4px -4px 10px rgba(0,0,0,0.1);
+        }
+
+        .tulip-side .bloom::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 5px;
+            width: 11px;
+            height: 16px;
+            background: #f39c12;
+            border-radius: 50% 50% 0 0;
+            transform: rotate(-20deg);
+        }
+
+        .tulip-side .bloom::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            right: 5px;
+            width: 11px;
+            height: 16px;
+            background: #f39c12;
+            border-radius: 50% 50% 0 0;
+            transform: rotate(20deg);
+        }
+
+        /* Tarjeta 3D Interactiva */
+        .envelope-card {
+            position: relative;
+            width: 320px;
+            height: 430px;
+            background: #fef9e7;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 5px 20px rgba(216, 27, 96, 0.1);
+            cursor: pointer;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid #f48fb1;
+            z-index: 10;
+        }
+
+        .card-front-flap {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fef9e7 0%, #fcf3cf 100%);
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform-origin: left;
+            -webkit-transform-origin: left;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 30px;
+            text-align: center;
+            border: 2px dashed #f48fb1;
+            z-index: 15;
+        }
+
+        .envelope-card.open .card-front-flap {
+            transform: rotateY(-180deg);
+            -webkit-transform: rotateY(-180deg);
+        }
+
+        .icon-heart {
+            font-size: 60px;
+            margin-bottom: 15px;
+            animation: pulse-icon 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-icon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .card-front-flap h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            color: #d81b60;
+            margin-bottom: 10px;
+        }
+
+        .card-front-flap p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .btn-open {
+            background: #d81b60;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(216, 27, 96, 0.3);
+        }
+
+        .card-inside-content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 22px 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+            text-align: left;
+            border: 2px solid #f8bbd0;
+            z-index: 12;
+        }
+
+        .envelope-card.open .card-inside-content {
+            transform: rotateY(0deg);
+            -webkit-transform: rotateY(0deg);
+        }
+
+        .card-inside-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #d81b60;
+            margin-bottom: 6px;
+            border-bottom: 2px solid #fce4ec;
+            padding-bottom: 4px;
+        }
+
+        .letter-body {
+            font-size: 0.76rem;
+            color: #333;
+            line-height: 1.5;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .letter-body p {
+            margin-bottom: 6px;
+        }
+
+        .letter-signature {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #d81b60;
+            text-align: right;
+            margin-top: 6px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Reproductor flotante estético y moderno */
+        .aesthetic-player {
+            position: fixed;
+            bottom: 20px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 100;
+            border: 1px solid #f8bbd0;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .aesthetic-player:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(216, 27, 96, 0.25);
+        }
+
+        .vinyl-disc {
+            width: 36px;
+            height: 36px;
+            background: #d81b60;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            box-shadow: 0 3px 10px rgba(216, 27, 96, 0.4);
+        }
+
+        .vinyl-disc.rotating {
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .player-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .song-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #d81b60;
+        }
+
+        .artist-name {
+            font-size: 0.72rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-note">Alguien que piensa mucho en ti</div>
+
+    <div class="scene-container">
+        <div class="tulip-side tulip-left">
+            <div class="stem"></div>
+            <div class="leaf-l"></div>
+            <div class="leaf-r"></div>
+            <div class="bloom"></div>
+        </div>
+
+        <div class="envelope-card" id="mainCard" onclick="toggleCardAndMusic()">
+            <div class="card-front-flap">
+                <div class="icon-heart">💌</div>
+                <h2>Para una super chica</h2>
+                <p>Tengo una pequeña sorpresa para ti el día de hoy...</p>
+                <div class="btn-open">Toca para abrir</div>
+            </div>
+
+            <div class="card-inside-content">
+                <h3>Para una super chica</h3>
+                <div class="letter-body">
+                    <p>Sé que estás nerviosa o tienes miedo acerca de la entrevista de hoy, pero quiero decirte lo increíble y fuerte que eres y de todo lo que eres capaz de hacer y más.</p>
+                    <p>Alguien inteligente y brillante como el sol, divertida y con cualidades que no todos tienen, y te admiro no solo por lo que eres capaz de hacer, sino por toda la bella persona que eres tú.</p>
+                    <p>Gracias por llegar a mi vida y hacerme feliz al tomar el teléfono y ver y esperar tus mensajes. Cuando pueda ir a San Salvador te invitaré a un Llao con tus toppings favoritos de super Galletas y Almendras.</p>
+                </div>
+                <div class="letter-signature">Con toda la mejor energía 💖</div>
+            </div>
+        </div>
+
+        <div class="tulip-side tulip-right">
+            <div class="stem"></div>
+            <div class="leaf-l"></div>
+            <div class="leaf-r"></div>
+            <div class="bloom"></div>
+        </div>
+    </div>
+
+    <!-- Audio real de Álvaro Díaz -->
+    <audio id="bgMusic" loop>
+        <source src="perdiste-el-emmy.mp3" type="audio/mpeg">
+        Tu navegador no soporta elementos de audio.
+    </audio>
+
+    <!-- Reproductor estético flotante -->
+    <div class="aesthetic-player" onclick="togglePlayMusic()">
+        <div class="vinyl-disc" id="vinylDisc">🎵</div>
+        <div class="player-text">
+            <span class="song-title">Perdiste el Emmy</span>
+            <span class="artist-name" id="playerStatus">Toca la carta o aquí para reproducir</span>
+        </div>
+    </div>
+
+    <script>
+        let isOpen = false;
+        let isPlaying = false;
+        const card = document.getElementById('mainCard');
+        const music = document.getElementById('bgMusic');
+        const vinylDisc = document.getElementById('vinylDisc');
+        const playerStatus = document.getElementById('playerStatus');
+
+        function toggleCardAndMusic() {
+            card.classList.toggle('open');
+            isOpen = !isOpen;
+            
+            if (!isPlaying) {
+                playMusic();
+            }
+        }
+
+        function togglePlayMusic() {
+            if (isPlaying) {
+                music.pause();
+                isPlaying = false;
+                vinylDisc.classList.remove('rotating');
+                playerStatus.textContent = "Música en pausa (Toca para reanudar)";
+            } else {
+                playMusic();
+            }
+        }
+
+        function playMusic() {
+            music.play().then(() => {
+                isPlaying = true;
+                vinylDisc.classList.add('rotating');
+                playerStatus.textContent = "Álvaro Díaz 🎶 (Reproduciendo)";
+            }).catch(err => {
+                console.log("Interacción bloqueada por navegador");
+            });
+        }
+    </script>
+</body>
+</html>
