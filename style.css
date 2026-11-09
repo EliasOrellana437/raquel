@@ -38,21 +38,21 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 600px;
+    max-width: 650px;
     height: 520px;
     perspective: 1600px;
 }
 
-/* --- TULIPANES DINÁMICOS (CRECIMIENTO Y FLORECIMIENTO) --- */
+/* --- TULIPANES REDISEÑADOS Y PERFECTAMENTE PROPORCIONADOS --- */
 .tulip-side {
     position: absolute;
-    width: 75px;
-    height: 230px;
+    width: 90px;
+    height: 260px;
     z-index: 2;
     pointer-events: none;
     opacity: 0;
-    transform: scale(0.1) translateY(90px);
-    transition: transform 1.3s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s, opacity 0.8s ease 0.3s;
+    transform: scale(0.1) translateY(100px);
+    transition: transform 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s, opacity 0.8s ease 0.2s;
 }
 
 .scene-container.bloom-active .tulip-side {
@@ -61,108 +61,122 @@ body {
 }
 
 .tulip-left {
-    left: 25px;
-    bottom: 35px;
+    left: 15px;
+    bottom: 25px;
     transform-origin: bottom center;
     animation: sway-left 4.5s ease-in-out infinite alternate 1.6s;
 }
 
 .tulip-right {
-    right: 25px;
-    bottom: 35px;
+    right: 15px;
+    bottom: 25px;
     transform-origin: bottom center;
     animation: sway-right 5s ease-in-out infinite alternate 1.6s;
 }
 
 @keyframes sway-left {
     0% { transform: rotate(-4deg); }
-    100% { transform: rotate(5deg); }
+    100% { transform: rotate(4deg); }
 }
 
 @keyframes sway-right {
     0% { transform: rotate(4deg); }
-    100% { transform: rotate(-5deg); }
+    100% { transform: rotate(-4deg); }
 }
 
+/* Contenedor interno del tulipán para que todo mantenga su estructura */
+.tulip-stem-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 42px;
+    width: 6px;
+    height: 180px;
+}
+
+/* Tallo elegante y firme */
 .stem {
     position: absolute;
     bottom: 0;
-    left: 35px;
+    left: 1px;
     width: 4px;
-    height: 150px;
+    height: 160px;
     background: linear-gradient(90deg, #27ae60, #2ecc71);
     border-radius: 2px;
 }
 
+/* Hoja izquierda unida al tallo de forma natural */
 .leaf-l {
     position: absolute;
-    bottom: 40px;
-    left: 10px;
-    width: 30px;
-    height: 48px;
+    bottom: 35px;
+    left: -22px;
+    width: 26px;
+    height: 60px;
     background: linear-gradient(135deg, #2ecc71, #27ae60);
-    border-radius: 0 60% 60% 0;
-    transform: rotate(-38deg);
+    border-radius: 50% 0 50% 50%;
+    transform: rotate(-30deg);
     transform-origin: bottom right;
     box-shadow: inset -2px -2px 6px rgba(0,0,0,0.1);
 }
 
+/* Hoja derecha unida al tallo de forma natural */
 .leaf-r {
     position: absolute;
-    bottom: 75px;
-    left: 35px;
-    width: 30px;
-    height: 48px;
+    bottom: 65px;
+    left: 4px;
+    width: 26px;
+    height: 60px;
     background: linear-gradient(135deg, #2ecc71, #27ae60);
-    border-radius: 60% 0 0 60%;
-    transform: rotate(38deg);
+    border-radius: 0 50% 50% 50%;
+    transform: rotate(30deg);
     transform-origin: bottom left;
     box-shadow: inset 2px -2px 6px rgba(0,0,0,0.1);
 }
 
+/* Capullo del tulipán clásico, simétrico y estético */
 .bloom {
     position: absolute;
-    top: 0;
-    left: 18px;
-    width: 38px;
-    height: 48px;
-    background: linear-gradient(135deg, #f7dc6f 0%, #f1c40f 50%, #d4ac0d 100%);
+    top: -15px;
+    left: -18px;
+    width: 42px;
+    height: 52px;
+    background: linear-gradient(135deg, #f9e79f 0%, #f1c40f 60%, #d4ac0d 100%);
     border-radius: 50% 50% 40% 40%;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12), inset -3px -3px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15), inset -3px -3px 8px rgba(0,0,0,0.15);
     transform: scale(0);
-    transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s;
+    transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s;
 }
 
 .scene-container.bloom-active .bloom {
     transform: scale(1);
 }
 
+/* Pétalos superiores integrados armónicamente en el capullo */
 .bloom::before {
     content: '';
     position: absolute;
-    top: -5px;
-    left: 5px;
-    width: 12px;
-    height: 17px;
+    top: -4px;
+    left: 6px;
+    width: 13px;
+    height: 18px;
     background: #f39c12;
     border-radius: 50% 50% 0 0;
-    transform: rotate(-20deg);
+    transform: rotate(-15deg);
 }
 
 .bloom::after {
     content: '';
     position: absolute;
-    top: -5px;
-    right: 5px;
-    width: 12px;
-    height: 17px;
+    top: -4px;
+    right: 6px;
+    width: 13px;
+    height: 18px;
     background: #f39c12;
     border-radius: 50% 50% 0 0;
-    transform: rotate(20deg);
+    transform: rotate(15deg);
 }
 
 
-/* --- SOBRE / CARTA 3D --- */
+/* --- CARTA / SOBRE 3D --- */
 .envelope-card {
     position: relative;
     width: 320px;
@@ -291,7 +305,7 @@ body {
     font-family: 'Playfair Display', serif;
 }
 
-/* --- REPRODUCTOR FLOTANTE ESTÉTICO --- */
+/* --- REPRODUCTOR ESTÉTICO --- */
 .aesthetic-player {
     position: fixed;
     bottom: 20px;

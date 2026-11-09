@@ -4,28 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para ti 💌</title>
-    <!-- Vinculamos la hoja de estilos externa -->
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Frase superior -->
     <div class="header-note" id="headerNote">Alguien que piensa mucho en ti</div>
 
-    <!-- Escena Principal -->
     <div class="scene-container" id="sceneContainer">
-        <!-- Tulipán izquierdo (crece y florece al hacer click) -->
+        <!-- Tulipán izquierdo con estructura unificada -->
         <div class="tulip-side tulip-left">
-            <div class="stem"></div>
-            <div class="leaf-l"></div>
-            <div class="leaf-r"></div>
-            <div class="bloom"></div>
+            <div class="tulip-stem-wrapper">
+                <div class="stem"></div>
+                <div class="leaf-l"></div>
+                <div class="leaf-r"></div>
+                <div class="bloom"></div>
+            </div>
         </div>
 
         <!-- Tarjeta / Sobre inicial -->
         <div class="envelope-card" id="mainCard" onclick="openEnvelope()">
-            <!-- Portada / Sobre cerrado -->
             <div class="card-front-flap">
                 <div class="icon-heart">💌</div>
                 <h2>Para una super chica</h2>
@@ -33,43 +31,41 @@
                 <div class="btn-open">Toca para abrir</div>
             </div>
 
-            <!-- Interior / Carta con mensaje -->
             <div class="card-inside-content">
                 <h3>Para una super chica</h3>
                 <div class="letter-body">
                     <p>Sé que estás nerviosa o tienes miedo acerca de la entrevista de hoy, pero quiero decirte lo increíble y fuerte que eres y de todo lo que eres capaz de hacer y más.</p>
                     <p>Alguien inteligente y brillante como el sol, divertida y con cualidades que no todos tienen, y te admiro no solo por lo que eres capaz de hacer, sino por toda la bella persona que eres tú.</p>
-                    <p>Gracias por llegar a mi vida y hacerme feliz al tomar el teléfono y ver y esperar tus mensajes. Cuando pueda ir a San Salvador te invitaré a un Llao con tus toppings favoritos de super Galletas y Almendras.</p>
+                    <p>Gracias por llegar a mi vida y hacerme feliz al tomar el teléfono y ver y esperar tus mensajes. Когда pueda ir a San Salvador te invitaré a un Llao con tus toppings favoritos de super Galletas y Almendras.</p>
                 </div>
                 <div class="letter-signature">Con toda la mejor energía 💖</div>
             </div>
         </div>
 
-        <!-- Tulipán derecho (crece y florece al hacer click) -->
+        <!-- Tulipán derecho con estructura unificada -->
         <div class="tulip-side tulip-right">
-            <div class="stem"></div>
-            <div class="leaf-l"></div>
-            <div class="leaf-r"></div>
-            <div class="bloom"></div>
+            <div class="tulip-stem-wrapper">
+                <div class="stem"></div>
+                <div class="leaf-l"></div>
+                <div class="leaf-r"></div>
+                <div class="bloom"></div>
+            </div>
         </div>
     </div>
 
-    <!-- Audio de Álvaro Díaz (el archivo MP3 debe llamarse PARADIXE Feid, El Americano 4KT, Pirlo (LETRA).mp3 en GitHub) -->
     <audio id="bgMusic" loop>
         <source src="PARADIXE Feid, El Americano 4KT, Pirlo (LETRA).mp3" type="audio/mpeg">
         Tu navegador no soporta elementos de audio.
     </audio>
 
-    <!-- Reproductor flotante estético y moderno -->
     <div class="aesthetic-player" onclick="togglePlayMusic()">
         <div class="vinyl-disc" id="vinylDisc">🎵</div>
         <div class="player-text">
-            <span class="song-title">tu mas escuchada</span>
+            <span class="song-title">tu cancion mas escuchada</span>
             <span class="artist-name" id="playerStatus">Toca el sobre para reproducir</span>
         </div>
     </div>
 
-    <!-- Vinculamos el archivo de lógica JavaScript externo -->
     <script src="script.js"></script>
 </body>
 </html>
