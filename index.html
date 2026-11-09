@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para una súper chica 💌</title>
+    <title>Para ti 💌</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
     <style>
         * {
@@ -13,7 +13,7 @@
         }
 
         body {
-            background-color: #a3e4d7 !important;
+            background: linear-gradient(135deg, #a3e4d7 0%, #76d7c4 100%);
             font-family: 'Plus Jakarta Sans', sans-serif;
             min-height: 100vh;
             display: flex;
@@ -30,152 +30,165 @@
             font-size: 0.95rem;
             color: #d81b60;
             font-weight: 700;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 10px 22px;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 10px 24px;
             border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(216, 27, 96, 0.12);
+            box-shadow: 0 8px 25px rgba(216, 27, 96, 0.15);
             z-index: 20;
-            text-align: center;
+            backdrop-filter: blur(5px);
         }
 
+        /* Contenedor Escena 3D */
         .scene-container {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 500px;
-            height: 460px;
-            perspective: 1500px;
-            margin-top: 15px;
+            max-width: 600px;
+            height: 500px;
+            perspective: 1600px;
+            margin-top: 20px;
         }
 
-        /* Tulipanes laterales estilizados y naturales */
+        /* --- TULIPANES REDISEÑADOS CON ARTE REAL Y ELEGANCIA 3D --- */
         .tulip-side {
             position: absolute;
-            width: 60px;
-            height: 200px;
+            width: 80px;
+            height: 240px;
             z-index: 5;
             pointer-events: none;
         }
 
         .tulip-left {
-            left: 10px;
-            bottom: 40px;
+            left: 20px;
+            bottom: 30px;
             transform-origin: bottom center;
-            animation: sway-left 4.2s ease-in-out infinite alternate;
+            animation: sway-left 4.5s ease-in-out infinite alternate;
         }
 
         .tulip-right {
-            right: 10px;
-            bottom: 40px;
+            right: 20px;
+            bottom: 30px;
             transform-origin: bottom center;
-            animation: sway-right 4.8s ease-in-out infinite alternate;
+            animation: sway-right 5s ease-in-out infinite alternate;
         }
 
         @keyframes sway-left {
-            0% { transform: rotate(-6deg); }
-            100% { transform: rotate(6deg); }
+            0% { transform: rotate(-5deg) translateY(0); }
+            100% { transform: rotate(5deg) translateY(-5px); }
         }
 
         @keyframes sway-right {
-            0% { transform: rotate(6deg); }
-            100% { transform: rotate(-6deg); }
+            0% { transform: rotate(5deg) translateY(0); }
+            100% { transform: rotate(-5deg) translateY(-5px); }
         }
 
-        .tulip-side .stem {
+        /* Tallo elegante y orgánico */
+        .stem {
             position: absolute;
             bottom: 0;
-            left: 28px;
-            width: 4px;
-            height: 130px;
-            background: #27ae60;
-            border-radius: 2px;
+            left: 38px;
+            width: 5px;
+            height: 160px;
+            background: linear-gradient(90deg, #27ae60, #2ecc71);
+            border-radius: 3px;
         }
 
-        .tulip-side .leaf-l {
+        /* Hojas curvas estilizadas */
+        .leaf-l {
             position: absolute;
-            bottom: 35px;
-            left: 6px;
-            width: 24px;
-            height: 38px;
-            background: #2ecc71;
-            border-radius: 0 50% 50% 0;
-            transform: rotate(-35deg);
-            transform-origin: bottom right;
-        }
-
-        .tulip-side .leaf-r {
-            position: absolute;
-            bottom: 60px;
-            left: 30px;
-            width: 24px;
-            height: 38px;
-            background: #2ecc71;
-            border-radius: 50% 0 0 50%;
-            transform: rotate(35deg);
-            transform-origin: bottom left;
-        }
-
-        .tulip-side .bloom {
-            position: absolute;
-            top: 5px;
+            bottom: 45px;
             left: 12px;
-            width: 34px;
-            height: 44px;
-            background: #f1c40f;
-            border-radius: 50% 50% 45% 45%;
-            box-shadow: inset -4px -4px 10px rgba(0,0,0,0.1);
+            width: 32px;
+            height: 55px;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            border-radius: 0 60% 60% 0;
+            transform: rotate(-40deg);
+            transform-origin: bottom right;
+            box-shadow: inset -3px -3px 8px rgba(0,0,0,0.1);
         }
 
-        .tulip-side .bloom::before {
+        .leaf-r {
+            position: absolute;
+            bottom: 80px;
+            left: 40px;
+            width: 32px;
+            height: 55px;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            border-radius: 60% 0 0 60%;
+            transform: rotate(40deg);
+            transform-origin: bottom left;
+            box-shadow: inset 3px -3px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Capullo de tulipán en capas con volumen */
+        .bloom {
+            position: absolute;
+            top: 0;
+            left: 20px;
+            width: 40px;
+            height: 52px;
+            background: linear-gradient(135deg, #f7dc6f 0%, #f1c40f 50%, #d4ac0d 100%);
+            border-radius: 50% 50% 40% 40%;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15), inset -4px -4px 10px rgba(0,0,0,0.15);
+        }
+
+        .bloom::before {
             content: '';
             position: absolute;
-            top: -5px;
-            left: 5px;
-            width: 11px;
-            height: 16px;
+            top: -6px;
+            left: 6px;
+            width: 13px;
+            height: 20px;
             background: #f39c12;
             border-radius: 50% 50% 0 0;
-            transform: rotate(-20deg);
+            transform: rotate(-22deg);
+            box-shadow: inset -2px -2px 5px rgba(0,0,0,0.1);
         }
 
-        .tulip-side .bloom::after {
+        .bloom::after {
             content: '';
             position: absolute;
-            top: -5px;
-            right: 5px;
-            width: 11px;
-            height: 16px;
+            top: -6px;
+            right: 6px;
+            width: 13px;
+            height: 20px;
             background: #f39c12;
             border-radius: 50% 50% 0 0;
-            transform: rotate(20deg);
+            transform: rotate(22deg);
+            box-shadow: inset 2px -2px 5px rgba(0,0,0,0.1);
         }
 
-        /* Tarjeta 3D Interactiva */
+        /* --- TARJETA 3D REAL CON PROFUNDIDAD --- */
         .envelope-card {
             position: relative;
-            width: 320px;
-            height: 430px;
+            width: 330px;
+            height: 450px;
             background: #fef9e7;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 5px 20px rgba(216, 27, 96, 0.1);
+            border-radius: 22px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18), 0 10px 20px rgba(216, 27, 96, 0.12);
             cursor: pointer;
             transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 2px solid #f48fb1;
+            transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 3px solid #f48fb1;
             z-index: 10;
         }
 
+        .envelope-card:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        /* Portada de la carta */
         .card-front-flap {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #fef9e7 0%, #fcf3cf 100%);
-            border-radius: 18px;
+            background: linear-gradient(135deg, #fffcf0 0%, #fef3c7 100%);
+            border-radius: 19px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -184,11 +197,12 @@
             -webkit-backface-visibility: hidden;
             transform-origin: left;
             -webkit-transform-origin: left;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 30px;
+            transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 35px;
             text-align: center;
             border: 2px dashed #f48fb1;
             z-index: 15;
+            box-shadow: inset 0 0 30px rgba(216, 27, 96, 0.03);
         }
 
         .envelope-card.open .card-front-flap {
@@ -197,9 +211,10 @@
         }
 
         .icon-heart {
-            font-size: 60px;
+            font-size: 65px;
             margin-bottom: 15px;
             animation: pulse-icon 2s infinite ease-in-out;
+            filter: drop-shadow(0 5px 10px rgba(216, 27, 96, 0.2));
         }
 
         @keyframes pulse-icon {
@@ -209,35 +224,42 @@
 
         .card-front-flap h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             color: #d81b60;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-weight: 700;
         }
 
         .card-front-flap p {
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             color: #555;
-            line-height: 1.4;
-            margin-bottom: 20px;
+            line-height: 1.5;
+            margin-bottom: 22px;
         }
 
         .btn-open {
-            background: #d81b60;
+            background: linear-gradient(135deg, #d81b60, #ad1457);
             color: white;
-            padding: 10px 24px;
+            padding: 11px 26px;
             border-radius: 30px;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             font-weight: 600;
-            box-shadow: 0 4px 12px rgba(216, 27, 96, 0.3);
+            box-shadow: 0 6px 20px rgba(216, 27, 96, 0.35);
+            transition: transform 0.2s ease;
         }
 
+        .btn-open:hover {
+            transform: scale(1.05);
+        }
+
+        /* Interior de la carta (Mensaje emotivo) */
         .card-inside-content {
             position: absolute;
             width: 100%;
             height: 100%;
             background: #ffffff;
-            border-radius: 18px;
-            padding: 22px 18px;
+            border-radius: 19px;
+            padding: 26px 22px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -248,6 +270,7 @@
             text-align: left;
             border: 2px solid #f8bbd0;
             z-index: 12;
+            box-shadow: inset 0 0 25px rgba(216, 27, 96, 0.04);
         }
 
         .envelope-card.open .card-inside-content {
@@ -257,42 +280,43 @@
 
         .card-inside-content h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: #d81b60;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             border-bottom: 2px solid #fce4ec;
-            padding-bottom: 4px;
+            padding-bottom: 6px;
         }
 
         .letter-body {
-            font-size: 0.76rem;
+            font-size: 0.8rem;
             color: #333;
-            line-height: 1.5;
+            line-height: 1.6;
             flex-grow: 1;
             overflow-y: auto;
+            padding-right: 4px;
         }
 
         .letter-body p {
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .letter-signature {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
             color: #d81b60;
             text-align: right;
-            margin-top: 6px;
+            margin-top: 8px;
             font-family: 'Playfair Display', serif;
         }
 
-        /* Reproductor flotante estético y moderno */
+        /* --- REPRODUCTOR FLOTANTE ESTÉTICO Y MODERNO --- */
         .aesthetic-player {
             position: fixed;
             bottom: 20px;
             background: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            padding: 10px 22px;
+            border-radius: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             display: flex;
             align-items: center;
             gap: 12px;
@@ -304,20 +328,20 @@
 
         .aesthetic-player:hover {
             transform: scale(1.03);
-            box-shadow: 0 10px 30px rgba(216, 27, 96, 0.25);
+            box-shadow: 0 12px 35px rgba(216, 27, 96, 0.25);
         }
 
         .vinyl-disc {
-            width: 36px;
-            height: 36px;
-            background: #d81b60;
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #d81b60, #ad1457);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 15px;
-            box-shadow: 0 3px 10px rgba(216, 27, 96, 0.4);
+            font-size: 16px;
+            box-shadow: 0 4px 12px rgba(216, 27, 96, 0.4);
         }
 
         .vinyl-disc.rotating {
@@ -335,13 +359,13 @@
         }
 
         .song-title {
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             font-weight: 700;
             color: #d81b60;
         }
 
         .artist-name {
-            font-size: 0.72rem;
+            font-size: 0.74rem;
             color: #666;
         }
     </style>
@@ -351,6 +375,7 @@
     <div class="header-note">Alguien que piensa mucho en ti</div>
 
     <div class="scene-container">
+        <!-- Tulipán izquierdo estilizado -->
         <div class="tulip-side tulip-left">
             <div class="stem"></div>
             <div class="leaf-l"></div>
@@ -358,6 +383,7 @@
             <div class="bloom"></div>
         </div>
 
+        <!-- Tarjeta 3D -->
         <div class="envelope-card" id="mainCard" onclick="toggleCardAndMusic()">
             <div class="card-front-flap">
                 <div class="icon-heart">💌</div>
@@ -377,6 +403,7 @@
             </div>
         </div>
 
+        <!-- Tulipán derecho estilizado -->
         <div class="tulip-side tulip-right">
             <div class="stem"></div>
             <div class="leaf-l"></div>
@@ -385,7 +412,7 @@
         </div>
     </div>
 
-    <!-- Audio real de Álvaro Díaz -->
+    <!-- Audio de Álvaro Díaz -->
     <audio id="bgMusic" loop>
         <source src="perdiste-el-emmy.mp3" type="audio/mpeg">
         Tu navegador no soporta elementos de audio.
