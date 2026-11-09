@@ -1,0 +1,351 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(135deg, #a3e4d7 0%, #76d7c4 100%);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.header-note {
+    position: absolute;
+    top: 25px;
+    font-size: 0.95rem;
+    color: #d81b60;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.92);
+    padding: 10px 24px;
+    border-radius: 30px;
+    box-shadow: 0 8px 25px rgba(216, 27, 96, 0.15);
+    z-index: 20;
+    backdrop-filter: blur(5px);
+}
+
+.scene-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    height: 520px;
+    perspective: 1600px;
+}
+
+/* --- TULIPANES DINÁMICOS (CRECIMIENTO Y FLORECIMIENTO) --- */
+.tulip-side {
+    position: absolute;
+    width: 75px;
+    height: 230px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.1) translateY(90px);
+    transition: transform 1.3s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s, opacity 0.8s ease 0.3s;
+}
+
+.scene-container.bloom-active .tulip-side {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.tulip-left {
+    left: 25px;
+    bottom: 35px;
+    transform-origin: bottom center;
+    animation: sway-left 4.5s ease-in-out infinite alternate 1.6s;
+}
+
+.tulip-right {
+    right: 25px;
+    bottom: 35px;
+    transform-origin: bottom center;
+    animation: sway-right 5s ease-in-out infinite alternate 1.6s;
+}
+
+@keyframes sway-left {
+    0% { transform: rotate(-4deg); }
+    100% { transform: rotate(5deg); }
+}
+
+@keyframes sway-right {
+    0% { transform: rotate(4deg); }
+    100% { transform: rotate(-5deg); }
+}
+
+.stem {
+    position: absolute;
+    bottom: 0;
+    left: 35px;
+    width: 4px;
+    height: 150px;
+    background: linear-gradient(90deg, #27ae60, #2ecc71);
+    border-radius: 2px;
+}
+
+.leaf-l {
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    width: 30px;
+    height: 48px;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border-radius: 0 60% 60% 0;
+    transform: rotate(-38deg);
+    transform-origin: bottom right;
+    box-shadow: inset -2px -2px 6px rgba(0,0,0,0.1);
+}
+
+.leaf-r {
+    position: absolute;
+    bottom: 75px;
+    left: 35px;
+    width: 30px;
+    height: 48px;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border-radius: 60% 0 0 60%;
+    transform: rotate(38deg);
+    transform-origin: bottom left;
+    box-shadow: inset 2px -2px 6px rgba(0,0,0,0.1);
+}
+
+.bloom {
+    position: absolute;
+    top: 0;
+    left: 18px;
+    width: 38px;
+    height: 48px;
+    background: linear-gradient(135deg, #f7dc6f 0%, #f1c40f 50%, #d4ac0d 100%);
+    border-radius: 50% 50% 40% 40%;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12), inset -3px -3px 8px rgba(0,0,0,0.15);
+    transform: scale(0);
+    transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s;
+}
+
+.scene-container.bloom-active .bloom {
+    transform: scale(1);
+}
+
+.bloom::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 5px;
+    width: 12px;
+    height: 17px;
+    background: #f39c12;
+    border-radius: 50% 50% 0 0;
+    transform: rotate(-20deg);
+}
+
+.bloom::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    width: 12px;
+    height: 17px;
+    background: #f39c12;
+    border-radius: 50% 50% 0 0;
+    transform: rotate(20deg);
+}
+
+
+/* --- SOBRE / CARTA 3D --- */
+.envelope-card {
+    position: relative;
+    width: 320px;
+    height: 430px;
+    background: #fef9e7;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(216, 27, 96, 0.1);
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 3px solid #f48fb1;
+    z-index: 10;
+}
+
+.envelope-card:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+.card-front-flap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #fffcf0 0%, #fef3c7 100%);
+    border-radius: 17px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    transform-origin: left;
+    transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 30px;
+    text-align: center;
+    border: 2px dashed #f48fb1;
+    z-index: 15;
+}
+
+.envelope-card.open .card-front-flap {
+    transform: rotateY(-180deg);
+}
+
+.icon-heart {
+    font-size: 65px;
+    margin-bottom: 15px;
+    animation: pulse-icon 2s infinite ease-in-out;
+}
+
+@keyframes pulse-icon {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.card-front-flap h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    color: #d81b60;
+    margin-bottom: 10px;
+}
+
+.card-front-flap p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.btn-open {
+    background: linear-gradient(135deg, #d81b60, #ad1457);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(216, 27, 96, 0.35);
+}
+
+.card-inside-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 17px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    text-align: left;
+    border: 2px solid #f8bbd0;
+    z-index: 12;
+}
+
+.envelope-card.open .card-inside-content {
+    transform: rotateY(0deg);
+}
+
+.card-inside-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #d81b60;
+    margin-bottom: 6px;
+    border-bottom: 2px solid #fce4ec;
+    padding-bottom: 4px;
+}
+
+.letter-body {
+    font-size: 0.77rem;
+    color: #333;
+    line-height: 1.55;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.letter-body p {
+    margin-bottom: 6px;
+}
+
+.letter-signature {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #d81b60;
+    text-align: right;
+    margin-top: 6px;
+    font-family: 'Playfair Display', serif;
+}
+
+/* --- REPRODUCTOR FLOTANTE ESTÉTICO --- */
+.aesthetic-player {
+    position: fixed;
+    bottom: 20px;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 35px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 100;
+    border: 1px solid #f8bbd0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.aesthetic-player:hover {
+    transform: scale(1.03);
+}
+
+.vinyl-disc {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #d81b60, #ad1457);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    box-shadow: 0 3px 10px rgba(216, 27, 96, 0.4);
+}
+
+.vinyl-disc.rotating {
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.player-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.song-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #d81b60;
+}
+
+.artist-name {
+    font-size: 0.72rem;
+    color: #666;
+}
