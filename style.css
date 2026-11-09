@@ -425,3 +425,72 @@ body::before {
     font-size: 0.75rem;
     color: #666;
 }
+
+/* --- CORRECCIÓN DE POSICIONAMIENTO DE LOS PÉTALOS 3D --- */
+.bloom {
+    position: absolute;
+    top: -35px;
+    left: -24px;
+    width: 54px;
+    height: 68px;
+    background: transparent;
+    transform: scale(0);
+    transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s;
+}
+
+.scene-container.bloom-active .bloom {
+    transform: scale(1);
+}
+
+/* Pétalo central principal */
+.petal-center {
+    position: absolute;
+    width: 48px;
+    height: 62px;
+    background: linear-gradient(135deg, #fff3b0 0%, #f1c40f 40%, #d4ac0d 80%, #b7950b 100%);
+    border-radius: 50% 50% 45% 45%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.18), inset -4px -6px 12px rgba(183, 149, 11, 0.6), inset 3px 3px 8px rgba(255,255,255,0.6);
+    left: 3px;
+    top: 4px;
+    z-index: 3;
+}
+
+/* Pétalo trasero para dar profundidad */
+.petal-back {
+    position: absolute;
+    width: 44px;
+    height: 58px;
+    background: linear-gradient(135deg, #d4ac0d 0%, #9a7d0a 100%);
+    border-radius: 50% 50% 40% 40%;
+    left: 5px;
+    top: 0px;
+    z-index: 1;
+}
+
+/* Pétalo izquierdo superpuesto */
+.petal-left {
+    position: absolute;
+    width: 32px;
+    height: 54px;
+    background: linear-gradient(135deg, #fce588 0%, #f39c12 100%);
+    border-radius: 60% 40% 40% 40%;
+    left: -2px;
+    top: 8px;
+    transform: rotate(-18deg);
+    z-index: 4;
+    box-shadow: inset -2px -4px 8px rgba(183, 149, 11, 0.5);
+}
+
+/* Pétalo derecho superpuesto */
+.petal-right {
+    position: absolute;
+    width: 32px;
+    height: 54px;
+    background: linear-gradient(135deg, #f9e79f 0%, #d68910 100%);
+    border-radius: 40% 60% 40% 40%;
+    right: -2px;
+    top: 8px;
+    transform: rotate(18deg);
+    z-index: 4;
+    box-shadow: inset 2px -4px 8px rgba(183, 149, 11, 0.5);
+}
