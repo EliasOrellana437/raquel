@@ -30,7 +30,7 @@ function playMusic() {
     music.play().then(() => {
         isPlaying = true;
         vinylDisc.classList.add('rotating');
-        playerStatus.textContent = "Álvaro Díaz 🎶 (Reproduciendo)";
+        playerStatus.textContent = "Con esfuerzo 🎶 (Reproduciendo)";
     }).catch(err => {
         console.log("Interacción bloqueada por políticas del navegador:", err);
     });
